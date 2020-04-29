@@ -199,7 +199,7 @@ class Client_a67a5f6a1fc7a2c40a4b31248139bd1a extends Client implements ClientIn
         }
         if (isset($config['idn_conversion']) && $config['idn_conversion'] !== false) {
             $idnOptions = $config['idn_conversion'] === true ? IDNA_DEFAULT : $config['idn_conversion'];
-            $uri = _idn_uri_convert($uri, $idnOptions);
+            $uri = Utils::idnUriConvert($uri, $idnOptions);
         }
         return $uri->getScheme() === '' && $uri->getHost() !== '' ? $uri->withScheme('http') : $uri;
     }
@@ -211,9 +211,7 @@ class Client_a67a5f6a1fc7a2c40a4b31248139bd1a extends Client implements ClientIn
      */
     private function configureDefaults(array $config)
     {
-        $defaults = ['allow_redirects' => RedirectMiddleware::$defaultSettings, 'http_errors' => true, 'decode_content' => true, 'verify' => true, 'cookies' => false];
-        // idn_to_ascii() is a part of ext-intl and might be not available
-        $defaults['idn_conversion'] = function_exists('idn_to_ascii') && (defined('INTL_IDNA_VARIANT_UTS46') || PHP_VERSION_ID < 70200);
+        $defaults = ['allow_redirects' => RedirectMiddleware::$defaultSettings, 'http_errors' => true, 'decode_content' => true, 'verify' => true, 'cookies' => false, 'idn_conversion' => true];
         // Use the standard Linux HTTP_PROXY and HTTPS_PROXY if set.
         // We can only trust the HTTP_PROXY environment variable in a CLI
         // process due to the fact that PHP has no reliable mechanism to

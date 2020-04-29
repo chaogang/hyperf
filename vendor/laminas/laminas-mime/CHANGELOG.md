@@ -2,6 +2,50 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
+## 2.7.4 - 2020-03-29
+
+### Added
+
+- Nothing.
+
+### Changed
+
+- Nothing.
+
+### Deprecated
+
+- Nothing.
+
+### Removed
+
+- Nothing.
+
+### Fixed
+
+- Fixed `replace` version constraint in composer.json so repository can be used as replacement of `zendframework/zend-mime:^2.7.2`.
+
+## 2.7.3 - 2020-03-06
+
+### Added
+
+- Nothing.
+
+### Changed
+
+- Nothing.
+
+### Deprecated
+
+- Nothing.
+
+### Removed
+
+- Nothing.
+
+### Fixed
+
+- [#10](https://github.com/laminas/laminas-mime/pull/10) improves implementation of `Mime::encodeQuotedPrintable()` for big strings by avoiding copying of the whole string in the loop.
+
 ## 2.7.2 - 2019-10-16
 
 ### Added

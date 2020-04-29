@@ -9,7 +9,6 @@ declare(strict_types=1);
  * @contact  group@hyperf.io
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
-
 namespace Hyperf\Amqp\Message;
 
 use Hyperf\Amqp\Builder\QueueBuilder;
@@ -33,4 +32,8 @@ interface ConsumerMessageInterface extends MessageInterface
     public function isEnable(): bool;
 
     public function setEnable(bool $enable);
+
+    public function getMaxConsumption(): int;
+
+    public function setMaxConsumption(int $maxConsumption);
 }

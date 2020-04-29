@@ -9,7 +9,6 @@ declare(strict_types=1);
  * @contact  group@hyperf.io
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
-
 namespace Hyperf\AsyncQueue\Driver;
 
 use Hyperf\AsyncQueue\Environment;
@@ -102,9 +101,11 @@ abstract class Driver implements DriverInterface
                 $this->checkQueueLength();
             }
 
-            if ($maxMessages > 0 && ++$messageCount >= $maxMessages) {
+            if ($maxMessages > 0 && $messageCount >= $maxMessages) {
                 break;
             }
+
+            ++$messageCount;
         }
     }
 
@@ -112,7 +113,7 @@ abstract class Driver implements DriverInterface
     {
         $info = $this->info();
         foreach ($info as $key => $value) {
-            $this->event && $this->event->dispatch(new QueueLength($key, $value));
+            $this->event && $this->event->dispatch(new QueueLength($this, $key, $value));
         }
     }
 

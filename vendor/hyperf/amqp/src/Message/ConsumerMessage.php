@@ -9,7 +9,6 @@ declare(strict_types=1);
  * @contact  group@hyperf.io
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
-
 namespace Hyperf\Amqp\Message;
 
 use Hyperf\Amqp\Builder\QueueBuilder;
@@ -48,6 +47,11 @@ abstract class ConsumerMessage extends Message implements ConsumerMessageInterfa
      * @var bool
      */
     protected $enable = true;
+
+    /**
+     * @var int
+     */
+    protected $maxConsumption = 0;
 
     public function setQueue(string $queue): self
     {
@@ -96,6 +100,17 @@ abstract class ConsumerMessage extends Message implements ConsumerMessageInterfa
     public function setEnable(bool $enable): self
     {
         $this->enable = $enable;
+        return $this;
+    }
+
+    public function getMaxConsumption(): int
+    {
+        return $this->maxConsumption;
+    }
+
+    public function setMaxConsumption(int $maxConsumption)
+    {
+        $this->maxConsumption = $maxConsumption;
         return $this;
     }
 }

@@ -9,7 +9,6 @@ declare(strict_types=1);
  * @contact  group@hyperf.io
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
-
 namespace Hyperf\Logger;
 
 use Hyperf\Contract\ConfigInterface;
@@ -54,10 +53,12 @@ class LoggerFactory
 
         $config = $config[$group];
         $handlers = $this->handlers($config);
+        $processors = $this->processors($config);
 
         return make(Logger::class, [
             'name' => $name,
             'handlers' => $handlers,
+            'processors' => $processors,
         ]);
     }
 
@@ -93,6 +94,24 @@ class LoggerFactory
             'class' => $handlerClass,
             'constructor' => $handlerConstructor,
         ];
+    }
+
+    protected function processors(array $config): array
+    {
+        $result = [];
+        if (! isset($config['processors']) && isset($config['processor'])) {
+            $config['processors'] = [$config['processor']];
+        }
+
+        foreach ($config['processors'] ?? [] as $value) {
+            if (is_array($value) && isset($value['class'])) {
+                $value = make($value['class'], $value['constructor'] ?? []);
+            }
+
+            $result[] = $value;
+        }
+
+        return $result;
     }
 
     protected function handlers(array $config): array

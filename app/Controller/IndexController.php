@@ -12,10 +12,14 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use Hyperf\DbConnection\Db;
+
 class IndexController extends AbstractController
 {
     public function index()
     {
+        $stocks = Db::select('SELECT * FROM gzc_warehouse_stocks;');
+        return $stocks;
         $user = $this->request->input('user', 'Hyperf');
         $method = $this->request->getMethod();
 

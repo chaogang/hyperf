@@ -14,6 +14,9 @@ namespace Hyperf\Redis;
 use Hyperf\Redis\Exception\InvalidRedisConnectionException;
 use Hyperf\Redis\Pool\PoolFactory;
 use Hyperf\Utils\Context;
+/**
+ * @mixin \Redis
+ */
 class Redis_0eb4423c5374596c9bd3d455437920ab extends Redis
 {
     use \Hyperf\Di\Aop\ProxyTrait;

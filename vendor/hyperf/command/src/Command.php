@@ -9,7 +9,6 @@ declare(strict_types=1);
  * @contact  group@hyperf.io
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
-
 namespace Hyperf\Command;
 
 use Hyperf\Utils\Contracts\Arrayable;
@@ -399,6 +398,8 @@ abstract class Command extends SymfonyCommand
 
                 $this->eventDispatcher->dispatch(new Event\FailToHandle($this, $exception));
                 return $exception->getCode();
+            } finally {
+                $this->eventDispatcher && $this->eventDispatcher->dispatch(new Event\AfterExecute($this));
             }
 
             return 0;

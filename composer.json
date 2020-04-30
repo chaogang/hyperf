@@ -35,7 +35,7 @@
         "hyperf/process": "~1.1.0",
         "hyperf/redis": "~1.1.0",
         "hyperf/utils": "~1.1.0",
-        "hyperf/config-apollo": "~1.1.0",
+        "hyperf/config-apollo": "^1.1",
         "hyperf/constants": "~1.1.0",
         "hyperf/async-queue": "~1.1.0",
         "hyperf/amqp": "~1.1.0",

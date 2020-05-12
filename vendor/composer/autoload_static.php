@@ -63,8 +63,11 @@ class ComposerStaticInit2b56fd24084a88a620f617bee5b7a553
             'Symfony\\Contracts\\EventDispatcher\\' => 34,
             'Symfony\\Component\\Translation\\' => 30,
             'Symfony\\Component\\Stopwatch\\' => 28,
+            'Symfony\\Component\\Serializer\\' => 29,
+            'Symfony\\Component\\PropertyAccess\\' => 33,
             'Symfony\\Component\\Process\\' => 26,
             'Symfony\\Component\\OptionsResolver\\' => 34,
+            'Symfony\\Component\\Inflector\\' => 28,
             'Symfony\\Component\\Finder\\' => 25,
             'Symfony\\Component\\Filesystem\\' => 29,
             'Symfony\\Component\\EventDispatcher\\' => 34,
@@ -117,9 +120,11 @@ class ComposerStaticInit2b56fd24084a88a620f617bee5b7a553
         ),
         'H' => 
         array (
+            'Hyperf\\View\\' => 12,
             'Hyperf\\Utils\\' => 13,
             'Hyperf\\Tracer\\' => 14,
             'Hyperf\\Testing\\' => 15,
+            'Hyperf\\Task\\' => 12,
             'Hyperf\\Server\\' => 14,
             'Hyperf\\Redis\\' => 13,
             'Hyperf\\Process\\' => 15,
@@ -260,6 +265,14 @@ class ComposerStaticInit2b56fd24084a88a620f617bee5b7a553
         array (
             0 => __DIR__ . '/..' . '/symfony/stopwatch',
         ),
+        'Symfony\\Component\\Serializer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/serializer',
+        ),
+        'Symfony\\Component\\PropertyAccess\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/property-access',
+        ),
         'Symfony\\Component\\Process\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/process',
@@ -267,6 +280,10 @@ class ComposerStaticInit2b56fd24084a88a620f617bee5b7a553
         'Symfony\\Component\\OptionsResolver\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/options-resolver',
+        ),
+        'Symfony\\Component\\Inflector\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/inflector',
         ),
         'Symfony\\Component\\Finder\\' => 
         array (
@@ -393,6 +410,10 @@ class ComposerStaticInit2b56fd24084a88a620f617bee5b7a553
         array (
             0 => __DIR__ . '/..' . '/jean85/pretty-package-versions/src',
         ),
+        'Hyperf\\View\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/hyperf/view/src',
+        ),
         'Hyperf\\Utils\\' => 
         array (
             0 => __DIR__ . '/..' . '/hyperf/utils/src',
@@ -404,6 +425,10 @@ class ComposerStaticInit2b56fd24084a88a620f617bee5b7a553
         'Hyperf\\Testing\\' => 
         array (
             0 => __DIR__ . '/..' . '/hyperf/testing/src',
+        ),
+        'Hyperf\\Task\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/hyperf/task/src',
         ),
         'Hyperf\\Server\\' => 
         array (

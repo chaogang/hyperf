@@ -5,8 +5,8 @@
 # @contact  group@hyperf.io
 # @license  https://github.com/hyperf-cloud/hyperf/blob/master/LICENSE
 
-FROM hyperf/hyperf:7.4-alpine-v3.10-cli
-LABEL maintainer="Hyperf Developers <group@hyperf.io>" version="1.0" license="MIT"
+FROM registry.cn-shanghai.aliyuncs.com/docker_image_lib/web:swoole4.52
+LABEL maintainer="Hyperf Developers <group@hyperf.io>" version="2.0" license="MIT"
 
 ##
 # ---------- env settings ----------
@@ -15,8 +15,8 @@ LABEL maintainer="Hyperf Developers <group@hyperf.io>" version="1.0" license="MI
 ARG timezone
 
 ENV TIMEZONE=${timezone:-"Asia/Shanghai"} \
-    COMPOSER_VERSION=1.9.0 \
-    APP_ENV=prod
+    APP_ENV=prod \
+    SCAN_CACHEABLE=(true)
 
 # update
 RUN set -ex \
@@ -52,7 +52,9 @@ WORKDIR /opt/www
 # RUN composer install --no-dev --no-scripts
 
 COPY . /opt/www
-RUN composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/ && composer install --no-dev -o
+RUN composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/ 
+    && composer install --no-dev -o 
+    && php bin/hyperf.php
 
 EXPOSE 9501
 

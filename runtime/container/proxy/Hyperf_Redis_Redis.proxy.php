@@ -17,9 +17,10 @@ use Hyperf\Utils\Context;
 /**
  * @mixin \Redis
  */
-class Redis_0eb4423c5374596c9bd3d455437920ab extends Redis
+class Redis
 {
     use \Hyperf\Di\Aop\ProxyTrait;
+    use \Hyperf\Di\Aop\PropertyHandlerTrait;
     use ScanCaller;
     /**
      * @var PoolFactory
@@ -31,13 +32,12 @@ class Redis_0eb4423c5374596c9bd3d455437920ab extends Redis
     protected $poolName = 'default';
     public function __construct(PoolFactory $factory)
     {
+        self::__handlePropertyHandler(__CLASS__);
         $this->factory = $factory;
     }
     public function __call($name, $arguments)
     {
-        $__function__ = __FUNCTION__;
-        $__method__ = __METHOD__;
-        return self::__proxyCall(Redis::class, __FUNCTION__, self::getParamsMap(Redis::class, __FUNCTION__, func_get_args()), function ($name, $arguments) use($__function__, $__method__) {
+        return self::__proxyCall(__CLASS__, __FUNCTION__, self::__getParamsMap(__CLASS__, __FUNCTION__, func_get_args()), function ($name, $arguments) {
             // Get a connection from coroutine context or connection pool.
             $hasContextConnection = Context::has($this->getContextKey());
             $connection = $this->getConnection($hasContextConnection);

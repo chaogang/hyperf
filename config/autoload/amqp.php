@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 return [
     'default' => [
-        'host' => 'localhost',
+        'host' => env('RabbitMQ_HOST', 'localhost'),
         'port' => 5672,
         'user' => 'guest',
         'password' => 'guest',

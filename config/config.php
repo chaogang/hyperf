@@ -14,7 +14,10 @@ use Hyperf\Contract\StdoutLoggerInterface;
 use Psr\Log\LogLevel;
 
 return [
-    'app_name' => env('APP_NAME', 'skeleton'),
+    // 生产环境使用 prod 值
+    'app_name' => env('APP_NAME', 'dev'),
+    // 是否使用注解扫描缓存
+    'scan_cacheable' => env('SCAN_CACHEABLE', true),
     StdoutLoggerInterface::class => [
         'log_level' => [
             LogLevel::ALERT,

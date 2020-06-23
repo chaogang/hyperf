@@ -12,21 +12,26 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Amqp\Consumer\DemoConsumer as ConsumerDemoConsumer;
 use Hyperf\DbConnection\Db;
 use Hyperf\Utils\Coroutine;
 use Hyperf\Utils\ApplicationContext;
 use Hyperf\Task\TaskExecutor;
 use Hyperf\Task\Task;
+use Hyperf\Di\Annotation\Inject;
+use Hyperf\Amqp\Producer;
+use App\Amqp\Producer\DemoProducer;
 
 class IndexController extends AbstractController
 {
+    /**
+     * @Inject 
+     * @var Producer
+     */
+    private $producer;
+
     public function index()
     {
-        $container = ApplicationContext::getContainer();
-        $exec = $container->get(TaskExecutor::class);
-        $exec->execute(new Task([IndexController::class, 'handle'], [Coroutine::id()]));
-        $stocks = Db::select('SELECT * FROM gzc_warehouse_stocks;');
-        return $stocks;
         $user = $this->request->input('user', 'Hyperf');
         $method = $this->request->getMethod();
 
